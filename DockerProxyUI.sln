@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerProxyUI", "DockerProxyUI\DockerProxyUI.csproj", "{7862D834-F262-4D3D-BC0B-A36EF14B18B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerProxy", "DockerProxy\DockerProxy.csproj", "{6AE5CFDC-D69A-4023-896A-DED68C8266F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7862D834-F262-4D3D-BC0B-A36EF14B18B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7862D834-F262-4D3D-BC0B-A36EF14B18B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7862D834-F262-4D3D-BC0B-A36EF14B18B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7862D834-F262-4D3D-BC0B-A36EF14B18B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AE5CFDC-D69A-4023-896A-DED68C8266F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AE5CFDC-D69A-4023-896A-DED68C8266F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AE5CFDC-D69A-4023-896A-DED68C8266F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AE5CFDC-D69A-4023-896A-DED68C8266F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51E23C73-6D29-4EA1-AD95-8747D555CCE3}
+	EndGlobalSection
+EndGlobal

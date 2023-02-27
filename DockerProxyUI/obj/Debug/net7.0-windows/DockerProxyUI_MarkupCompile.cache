@@ -1,0 +1,20 @@
+﻿DockerProxyUI
+
+
+winexe
+C#
+.cs
+D:\Private Repos\DockerProxyUI\DockerProxyUI\obj\Debug\net7.0-windows\
+DockerProxyUI
+none
+false
+TRACE;DEBUG;NET;NET7_0;NETCOREAPP
+D:\Private Repos\DockerProxyUI\DockerProxyUI\App.xaml
+9-1199820473
+
+16-347214846
+201-1105673104
+MainWindow.xaml;MVVM\View\ContainersView.xaml;MVVM\View\DashboardView.xaml;MVVM\View\ImagesView.xaml;MVVM\View\SettingsView.xaml;MVVM\View\VolumesView.xaml;Theme\DarkColorTheme.xaml;Theme\MenuButtonTheme.xaml;Theme\SearchBoxTheme.xaml;
+
+False
+

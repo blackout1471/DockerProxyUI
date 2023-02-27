@@ -1,0 +1,40 @@
+﻿<Application x:Class="DockerProxyUI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DockerProxyUI"
+             xmlns:viewModel="clr-namespace:DockerProxyUI.MVVM.ViewModel"
+             xmlns:view="clr-namespace:DockerProxyUI.MVVM.View"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/DarkColorTheme.xaml" />
+                
+                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml" />
+                <ResourceDictionary Source="Theme/SearchBoxTheme.xaml" />
+                
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:DashBoardViewModel}">
+                <view:DashboardView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ContainersViewModel}">
+                <view:ContainerView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:VolumesViewModel}">
+                <view:VolumeView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ImagesViewModel}">
+                <view:ImageView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
+                <view:SettingsView />
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

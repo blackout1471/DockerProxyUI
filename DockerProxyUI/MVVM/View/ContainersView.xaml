@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="DockerProxyUI.MVVM.View.ContainerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DockerProxyUI.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <TextBlock Text="Containers" 
+                   Foreground="{StaticResource PrimaryColor}"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="0,0,0,20"/>
+
+        <TextBox Width="250"
+                 Height="40"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Left"
+                 Margin="5"
+                 Style="{StaticResource SearchBoxTheme}" />
+
+        <ListView ItemsSource="{Binding Containers}"
+                  Background="Transparent">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" 
+                                    DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Started"
+                                    DisplayMemberBinding="{Binding State}" />
+                    <GridViewColumn Header="Status"
+                                    DisplayMemberBinding="{Binding Status}" />
+
+                    <GridViewColumn Header="">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Start"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </StackPanel>
+</UserControl>
