@@ -4,8 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DockerProxyUI.MVVM.View"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        
+
+        
+    </UserControl.Resources>
     <StackPanel>
         <TextBlock Text="Containers" 
                    Foreground="{StaticResource PrimaryColor}"
@@ -20,38 +27,86 @@
                  Margin="5"
                  Style="{StaticResource SearchBoxTheme}" />
 
-        <DataGrid RowStyle="{DynamicResource DataGridRowTheme}" CellStyle="{DynamicResource DataGridCellTheme}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderTheme}" Style="{DynamicResource DataGridTheme}" 
-                  ItemsSource="{Binding Containers}"
-                  >
+        <DataGrid RowStyle="{DynamicResource DataGridRowTheme}" 
+                CellStyle="{DynamicResource DataGridCellTheme}" 
+                ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderTheme}" 
+                Style="{DynamicResource DataGridTheme}" 
+                ItemsSource="{Binding Containers}" >
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
                                     Binding="{Binding Name}"
-                                    FontSize="14"
-                                    />
+                                    FontSize="14">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
 
                 <DataGridTextColumn Header="Image"
                                     Binding="{Binding Image}"
-                                    FontSize="12"
-                                    />
+                                    FontSize="12">
+                    <DataGridTextColumn.ElementStyle>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                    </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
 
                 <DataGridTextColumn Header="Status"
                                     Binding="{Binding Status}"
                                     FontSize="12"
-                                    />
+                                    >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
 
                 <DataGridTextColumn Header="Ports"
                                     Binding="{Binding Ports}"
                                     FontSize="12"
-                                    />
+                                    >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
 
                 <DataGridTextColumn Header="Started"
                                     Binding="{Binding State}"
                                     FontSize="12"
-                                    />
+                                    >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock Text="Actions" />
+                    </DataGridTemplateColumn.Header>
+                    
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <fa:IconBlock Icon="Play" Margin="5" />
+                                <fa:IconBlock Icon="Stop" Margin="5" />
+                                <fa:IconBlock Icon="Trash" Margin="5" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
 
         </DataGrid>
+
+
 
     </StackPanel>
 </UserControl>

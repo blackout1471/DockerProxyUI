@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml" />
                 <ResourceDictionary Source="Theme/SearchBoxTheme.xaml" />
                 <ResourceDictionary Source="Theme/DataGridTheme.xaml" />
+                <ResourceDictionary Source="Theme/ListViewTheme.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
 

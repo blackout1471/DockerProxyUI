@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DockerProxyUI"
         xmlns:viewModel="clr-namespace:DockerProxyUI.MVVM.ViewModel"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="600" Width="920"
@@ -12,6 +13,22 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True">
+    <Window.Resources>
+        <FontFamily x:Key="FontAwesome">/FontAwesome.Sharp;component/fonts/#Font Awesome 6 Free Solid</FontFamily>
+
+        <Style TargetType="Button" x:Key="windowFaButton">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
+
+            <Setter Property="Foreground" Value="{StaticResource SecondaryColor}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="{StaticResource TertiaryColor}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
 
     <Window.DataContext>
         <viewModel:MainViewModel />
@@ -30,6 +47,39 @@
                 <RowDefinition Height="75"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" PreviewMouseLeftButtonDown="StackPanel_PreviewMouseLeftButtonDown">
+                <Button 
+                    Background="Transparent" 
+                    BorderBrush="Transparent" 
+                    Width="auto" Height="auto" 
+                    VerticalAlignment="Top" 
+                    Margin="5,3,0,0"
+                    Content="{fa:ToText Close}"
+                    Style="{StaticResource windowFaButton}">
+                </Button>
+
+                <Button 
+                    Background="Transparent" 
+                    BorderBrush="Transparent" 
+                    Width="auto" Height="auto" 
+                    VerticalAlignment="Top" 
+                    Margin="5,3,0,0"
+                    Content="{fa:ToText Minus}"
+                    Style="{StaticResource windowFaButton}">
+                </Button>
+
+                <Button 
+                    Background="Transparent" 
+                    BorderBrush="Transparent" 
+                    Width="auto" Height="auto" 
+                    VerticalAlignment="Top" 
+                    Margin="5,3,0,0"
+                    Content="{fa:ToText Compress}"
+                    Style="{StaticResource windowFaButton}">
+                </Button>
+
+            </StackPanel>
 
             <TextBlock Grid.Column="1"
                        Text="Docker Proxy"

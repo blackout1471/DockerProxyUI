@@ -24,5 +24,13 @@ namespace DockerProxyUI
         {
             InitializeComponent();
         }
+
+        private void StackPanel_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
     }
 }

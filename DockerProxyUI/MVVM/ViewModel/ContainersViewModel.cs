@@ -16,12 +16,18 @@ internal class ContainersViewModel
     public ContainersViewModel()
     {
         var uri = new Uri("npipe://./pipe/docker_engine");
+        uri = new UriBuilder("tcp", "localhost", 2375).Uri;
         _containerManager = new ContainerManager(new DockerContainerProvider(uri));
 
         Task.Run(async () =>
         {
             var containers = await _containerManager.GetContainersAsync();
             Containers = new ObservableCollection<Container>(containers);
+            Containers.Add(new Container() { Name = "Test" });
+            Containers.Add(new Container() { Name = "Test" });
+            Containers.Add(new Container() { Name = "Test" });
+            Containers.Add(new Container() { Name = "Test" });
+            Containers.Add(new Container() { Name = "Test" });
         });
     }
 }
