@@ -1,4 +1,9 @@
-﻿using DockerProxyUI.Core;
+﻿using DockerProxy.Managers;
+using DockerProxy.Providers;
+using DockerProxy.Services;
+using DockerProxyUI.Core;
+using System;
+using System.Collections.ObjectModel;
 
 namespace DockerProxyUI.MVVM.ViewModel;
 
@@ -27,6 +32,8 @@ internal class MainViewModel : ObservableObject
 		}
 	}
 
+    private readonly ContainerService _service;
+
     public MainViewModel()
     {
         DashBoardViewModel = new DashBoardViewModel();
@@ -34,6 +41,23 @@ internal class MainViewModel : ObservableObject
         ImagesViewModel = new ImagesViewModel();
         VolumesViewModel = new VolumesViewModel();
         SettingsViewModel = new SettingsViewModel();
+
+        var provider = new DockerContainerProvider(new Uri("npipe://./pipe/docker_engine"));
+        var containerManager = new ContainerManager(provider);
+        var imageManager = new ImageManager(provider);
+
+
+        _service = new ContainerService(containerManager, imageManager);
+        _service.OnContainersFetched += (containers) => 
+        {
+            ContainersViewModel.Containers = new ObservableCollection<DockerProxy.Models.Container>(containers);
+        };
+
+        _service.OnImagesFetched += (images) =>
+        {
+            ImagesViewModel.Images = new ObservableCollection<DockerProxy.Models.Image>(images);
+        };
+        _service.Start();
 
 
 		CurrentView = DashBoardViewModel;
