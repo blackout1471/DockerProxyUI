@@ -32,7 +32,7 @@ internal class MainViewModel : ObservableObject
 		}
 	}
 
-    private readonly ContainerService _service;
+    private readonly ContainerBackgroundService _service;
 
     public MainViewModel()
     {
@@ -47,7 +47,7 @@ internal class MainViewModel : ObservableObject
         var imageManager = new ImageManager(provider);
 
 
-        _service = new ContainerService(containerManager, imageManager);
+        _service = new ContainerBackgroundService(containerManager, imageManager);
         _service.OnContainersFetched += (containers) => 
         {
             ContainersViewModel.Containers = new ObservableCollection<DockerProxy.Models.Container>(containers);

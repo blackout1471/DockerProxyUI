@@ -2,17 +2,21 @@
 
 public class Container
 {
-    public string Id { get; set; }
+    public string Id { get; init; }
 
-    public string Name { get; set; }
+    public string Name { get; init; }
 
-    public string Image { get; set; }
+    public string ImageName { get; init; }
 
-    public DateTime Created { get; set; }
+    public string ImageId { get; init; }
 
-    public IList<byte> Ports { get; set; }
+    public DateTime Created { get; init; }
 
-    public string State { get; set; }
+    public IList<byte> Ports { get; init; }
 
-    public string Status { get; set; }
+    public string State { get; init; }
+
+    public string Status { get; init; }
+
+    public Image? Image { get; set; }
 }

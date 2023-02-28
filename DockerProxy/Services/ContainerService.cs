@@ -1,61 +1,34 @@
 ﻿using DockerProxy.Managers;
 using DockerProxy.Models;
-using System.ComponentModel;
-using Container = DockerProxy.Models.Container;
 
 namespace DockerProxy.Services;
 
 public class ContainerService
 {
-    public delegate void FetchedContainersEventHandler(IEnumerable<Container> containers);
-    public delegate void FetchedImagesEventHandler(IEnumerable<Image> images);
-
-    public int FetchInSeconds { get; set; } = 5;
-
-    public Uri ContainerConnection { get; set; } = new Uri("npipe://./pipe/docker_engine");
-
-    public event FetchedContainersEventHandler? OnContainersFetched;
-    public event FetchedImagesEventHandler? OnImagesFetched;
+    public IEnumerable<Container> Containers { get; private set;}
+    public IEnumerable<Image> Images { get; private set; }
 
     private readonly IContainerManager _ContainerManager;
     private readonly IImageManager _ImageManager;
-
-    private readonly BackgroundWorker _Worker;
 
     public ContainerService(IContainerManager containerManager, IImageManager imageManager)
     {
         _ContainerManager = containerManager;
         _ImageManager = imageManager;
-        _Worker = new BackgroundWorker();
-
-        _Worker.DoWork += FetchContainerData;
     }
 
-    public void Start()
+    public async Task GetAllContainerData()
     {
-        if (!_Worker.IsBusy)
-            _Worker.RunWorkerAsync();
-    }
+        Containers = await _ContainerManager.GetContainersAsync()
+            .ContinueWith(x => x.Result.ToList());
 
-    public void StopAsync()
-    {
-        if (_Worker.IsBusy)
-            _Worker.CancelAsync();
-    }
-
-    private void FetchContainerData(object? sender, DoWorkEventArgs e)
-    {
-        while (!_Worker.CancellationPending)
+        Images = await _ImageManager.GetImagesAsync()
+            .ContinueWith(x => x.Result.ToList()); ;
+        
+        foreach (var container in Containers)
         {
-            Task.Run(async () =>
-            {
-                OnImagesFetched?.Invoke( await _ImageManager.GetImagesAsync() );
-                OnContainersFetched?.Invoke( await _ContainerManager.GetContainersAsync() );
-            });
-
-            Thread.Sleep(FetchInSeconds * 1000);
+            var image = Images.FirstOrDefault(x => x.Id == container.ImageId);
+            container.Image = image;
         }
     }
-
-
 }

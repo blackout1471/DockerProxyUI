@@ -20,11 +20,14 @@ public class ContainerManager : IContainerManager
         {
             Id = x.Id,
             Name = x.Names.First(),
-            Image = x.Image,
+            ImageName = x.Image,
+            ImageId = x.ImageId,
             Created = x.Created,
             Ports = x.Ports,
             State = x.State,
             Status = x.Status,
         });
+
+
     }
 }
