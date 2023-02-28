@@ -15,7 +15,7 @@ internal class ContainersViewModel
 
     public ContainersViewModel()
     {
-        var uri = new UriBuilder("tcp", "::1", 2375).Uri;
+        var uri = new Uri("npipe://./pipe/docker_engine");
         _containerManager = new ContainerManager(new DockerContainerProvider(uri));
 
         Task.Run(async () =>

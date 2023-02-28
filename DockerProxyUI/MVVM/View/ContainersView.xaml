@@ -20,36 +20,38 @@
                  Margin="5"
                  Style="{StaticResource SearchBoxTheme}" />
 
-        <ListView ItemsSource="{Binding Containers}"
-                  Background="Transparent">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name" 
-                                    DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Started"
-                                    DisplayMemberBinding="{Binding State}" />
-                    <GridViewColumn Header="Status"
-                                    DisplayMemberBinding="{Binding Status}" />
+        <DataGrid RowStyle="{DynamicResource DataGridRowTheme}" CellStyle="{DynamicResource DataGridCellTheme}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderTheme}" Style="{DynamicResource DataGridTheme}" 
+                  ItemsSource="{Binding Containers}"
+                  >
 
-                    <GridViewColumn Header="">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Start"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"
+                                    Binding="{Binding Name}"
+                                    FontSize="14"
+                                    />
 
-                    <GridViewColumn Header="">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Delete"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                <DataGridTextColumn Header="Image"
+                                    Binding="{Binding Image}"
+                                    FontSize="12"
+                                    />
 
-                </GridView>
-            </ListView.View>
-        </ListView>
+                <DataGridTextColumn Header="Status"
+                                    Binding="{Binding Status}"
+                                    FontSize="12"
+                                    />
+
+                <DataGridTextColumn Header="Ports"
+                                    Binding="{Binding Ports}"
+                                    FontSize="12"
+                                    />
+
+                <DataGridTextColumn Header="Started"
+                                    Binding="{Binding State}"
+                                    FontSize="12"
+                                    />
+            </DataGrid.Columns>
+
+        </DataGrid>
 
     </StackPanel>
 </UserControl>

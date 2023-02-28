@@ -47,7 +47,9 @@
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
                              Command="{Binding DashBoardViewCommand}"
-                             />
+                             >
+                    
+                </RadioButton>
 
                 <RadioButton Content="Containers" 
                              Height="50"
