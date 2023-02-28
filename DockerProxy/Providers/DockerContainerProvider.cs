@@ -40,4 +40,26 @@ public class DockerContainerProvider : IContainerProvider
 
         return containerDtos;
     }
+
+    public async Task<IEnumerable<ImageDto>> GetAllImagesAsync()
+    {
+        var images = await _client.Images.ListImagesAsync(new ImagesListParameters()
+        {
+            All = true
+        });
+
+        return images.Select(x => new ImageDto()
+        {
+            Containers = x.Containers,
+            Created = x.Created,
+            Id = x.ID,
+            Labels = x.Labels,
+            ParentId = x.ParentID,
+            RepoDigests = x.RepoDigests,
+            RepoTags = x.RepoTags,
+            SharedSize = x.SharedSize,
+            Size = x.Size,
+            VirtualSize = x.VirtualSize
+        });
+    }
 }

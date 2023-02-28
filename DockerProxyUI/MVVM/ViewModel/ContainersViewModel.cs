@@ -23,11 +23,6 @@ internal class ContainersViewModel
         {
             var containers = await _containerManager.GetContainersAsync();
             Containers = new ObservableCollection<Container>(containers);
-            Containers.Add(new Container() { Name = "Test" });
-            Containers.Add(new Container() { Name = "Test" });
-            Containers.Add(new Container() { Name = "Test" });
-            Containers.Add(new Container() { Name = "Test" });
-            Containers.Add(new Container() { Name = "Test" });
         });
     }
 }
