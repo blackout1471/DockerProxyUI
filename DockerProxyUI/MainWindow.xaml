@@ -13,22 +13,6 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True">
-    <Window.Resources>
-        <FontFamily x:Key="FontAwesome">/FontAwesome.Sharp;component/fonts/#Font Awesome 6 Free Solid</FontFamily>
-
-        <Style TargetType="Button" x:Key="windowFaButton">
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
-
-            <Setter Property="Foreground" Value="{StaticResource SecondaryColor}" />
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Foreground" Value="{StaticResource TertiaryColor}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
 
     <Window.DataContext>
         <viewModel:MainViewModel />
@@ -52,40 +36,35 @@
                     Grid.Row="0"
                     BorderBrush="{StaticResource SecondaryColor}"
                     BorderThickness="0,0,0,1"
-                    PreviewMouseLeftButtonDown="Window_Drag"
-                    IsHitTestVisible="True"
-                    Background="Transparent"
                     >
-                <StackPanel Orientation="Horizontal">
-                    <Button 
-                        Background="Transparent" 
-                        BorderBrush="Transparent" 
-                        Width="auto" Height="auto" 
+                <StackPanel Orientation="Horizontal"
+                            MouseLeftButtonDown="Window_Drag"
+                            Background="Transparent"
+                        >
+                    <Button
                         VerticalAlignment="Top" 
                         Margin="5,3,0,0"
                         Content="{fa:ToText Close}"
-                        Style="{StaticResource windowFaButton}">
+                        Style="{StaticResource WindowCloseButtonStyleTheme}"
+                        Click="Window_Close"
+                        >
                     </Button>
 
-                    <Button 
-                        Background="Transparent" 
-                        BorderBrush="Transparent" 
-                        Width="auto" Height="auto" 
+                    <Button
                         VerticalAlignment="Top" 
                         Margin="5,3,0,0"
                         Content="{fa:ToText Minus}"
-                        Style="{StaticResource windowFaButton}">
-                    </Button>
+                        Style="{StaticResource WindowMinimizeButtonStyleTheme}" 
+                        Click="Window_Minimize"
+                        />
 
-                    <Button 
-                        Background="Transparent" 
-                        BorderBrush="Transparent" 
-                        Width="auto" Height="auto" 
+                    <Button
                         VerticalAlignment="Top" 
                         Margin="5,3,0,0"
                         Content="{fa:ToText Compress}"
-                        Style="{StaticResource windowFaButton}">
-                    </Button>
+                        Style="{StaticResource WindowMaximizeButtonStyleTheme}" 
+                        Click="Window_ToggleMaximize"
+                        />
 
                 </StackPanel>
             </Border>

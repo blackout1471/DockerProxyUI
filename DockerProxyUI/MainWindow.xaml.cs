@@ -4,14 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DockerProxyUI
 {
@@ -28,9 +21,27 @@ namespace DockerProxyUI
         private void Window_Drag(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
-            {
                 DragMove();
-            }
+
+            e.Handled = true;
+        }
+
+        private void Window_Close(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Window_Minimize(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void Window_ToggleMaximize(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Normal)
+                WindowState = WindowState.Maximized;
+            else
+                WindowState = WindowState.Normal;
         }
     }
 }
