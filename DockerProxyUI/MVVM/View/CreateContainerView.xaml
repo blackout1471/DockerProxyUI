@@ -27,5 +27,48 @@
                 <TextBlock Text="Image 4" />
             </ComboBoxItem>
         </ComboBox>
+
+        <ScrollViewer>
+            <StackPanel>
+
+                <TextBlock 
+                    FontSize="{StaticResource LargeFontSize}"
+                    Text="Name"
+                    Foreground="{StaticResource PrimaryColor}"
+                    />
+                <TextBox 
+                    FontSize="{StaticResource MediumFontSize}"
+                    />
+
+                <TextBlock 
+                    FontSize="{StaticResource LargeFontSize}"
+                    Text="Ports"
+                    Foreground="{StaticResource PrimaryColor}"
+                    />
+                <TextBox
+                    FontSize="{StaticResource MediumFontSize}"
+                    />
+
+                <TextBlock 
+                    FontSize="{StaticResource LargeFontSize}"
+                    Text="Volumes"
+                    Foreground="{StaticResource PrimaryColor}"
+                    />
+                <TextBox
+                    FontSize="{StaticResource MediumFontSize}"
+                    />
+
+                <TextBlock 
+                    FontSize="{StaticResource LargeFontSize}"
+                    Text="Environment variables"
+                    Foreground="{StaticResource PrimaryColor}"
+                    />
+                <TextBox
+                    FontSize="{StaticResource MediumFontSize}"
+                    />
+            </StackPanel>
+        </ScrollViewer>
+        
+        
     </StackPanel>
 </UserControl>

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:DockerProxyUI"
         xmlns:viewModel="clr-namespace:DockerProxyUI.MVVM.ViewModel"
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:core="clr-namespace:DockerProxyUI.Core"
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="600" Width="920"
@@ -84,7 +85,7 @@
                              FontSize="{StaticResource MediumFontSize}"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
-                             Command="{Binding DashBoardViewCommand}"
+                             Command="{Binding Source={x:Static core:PageNavigator.Instance}, Path=DashBoardViewCommand}"
                              >
                     
                 </RadioButton>
@@ -94,7 +95,7 @@
                              Foreground="{StaticResource PrimaryColor}"
                              FontSize="{StaticResource MediumFontSize}"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding ContainersViewCommand}"
+                             Command="{Binding Source={x:Static core:PageNavigator.Instance}, Path=ContainersViewCommand}"
                              />
 
                 <RadioButton Content="Images" 
@@ -102,7 +103,7 @@
                              Foreground="{StaticResource PrimaryColor}"
                              FontSize="{StaticResource MediumFontSize}"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding ImagesViewCommand}"
+                             Command="{Binding Source={x:Static core:PageNavigator.Instance}, Path=ImagesViewCommand}"
                              />
 
 
@@ -111,7 +112,7 @@
                              Foreground="{StaticResource PrimaryColor}"
                              FontSize="{StaticResource MediumFontSize}"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding VolumesViewCommand}"
+                             Command="{Binding Source={x:Static core:PageNavigator.Instance}, Path=VolumesViewCommand}"
                              />
 
                 <RadioButton Content="Settings" 
@@ -119,7 +120,7 @@
                              Foreground="{StaticResource PrimaryColor}"
                              FontSize="{StaticResource MediumFontSize}"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding SettingsViewCommand}"
+                             Command="{Binding Source={x:Static core:PageNavigator.Instance}, Path=SettingsViewCommand}"
                              />
 
             </StackPanel>
@@ -127,7 +128,7 @@
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
                             Margin="10"
-                            Content="{Binding CurrentView}"/>
+                            Content="{Binding Source={x:Static core:PageNavigator.Instance}, Path=CurrentView}"/>
 
         </Grid>
 

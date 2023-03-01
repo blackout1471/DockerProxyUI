@@ -38,6 +38,10 @@
                 <view:SettingsView />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:CreateContainerViewModel}">
+                <view:CreateContainerView />
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
