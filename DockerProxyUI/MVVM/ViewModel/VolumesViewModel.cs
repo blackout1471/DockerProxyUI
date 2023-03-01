@@ -7,8 +7,8 @@ internal class VolumesViewModel
 {
     public ObservableCollection<Volume> Volumes { get; set; }
 
-	public VolumesViewModel()
-	{
-		Volumes = new ObservableCollection<Volume>();
-	}
+    public VolumesViewModel()
+    {
+        Volumes = new ObservableCollection<Volume>();
+    }
 }

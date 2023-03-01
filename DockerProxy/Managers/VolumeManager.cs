@@ -19,16 +19,16 @@ public class VolumeManager : IVolumeManager
 
         return volumes.Select(x => new Volume()
         {
-            CreatedAt= x.CreatedAt,
+            CreatedAt = x.CreatedAt,
             Driver = x.Driver,
-            Labels= x.Labels,
-            Mountpoint= x.Mountpoint,
-            Name= x.Name,
-            Options= x.Options,
-            RefCount= x.RefCount,
-            Scope= x.Scope,
-            Size= x.Size,
-            Status= x.Status,
+            Labels = x.Labels,
+            Mountpoint = x.Mountpoint,
+            Name = x.Name,
+            Options = x.Options,
+            RefCount = x.RefCount,
+            Scope = x.Scope,
+            Size = x.Size,
+            Status = x.Status,
         });
     }
 }

@@ -1,9 +1,5 @@
-﻿using DockerProxy.Managers;
-using DockerProxy.Models;
-using DockerProxy.Providers;
-using System;
+﻿using DockerProxy.Models;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 
 namespace DockerProxyUI.MVVM.ViewModel;
 

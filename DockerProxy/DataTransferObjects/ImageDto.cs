@@ -7,7 +7,7 @@ public class ImageDto
     public long ContainerUseId { get; init; }
 
     public DateTime Created { get; init; }
-    
+
     public IDictionary<string, string> Labels { get; init; }
 
     public string ParentId { get; init; }

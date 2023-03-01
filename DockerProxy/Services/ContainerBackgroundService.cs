@@ -49,9 +49,9 @@ public class ContainerBackgroundService
             {
                 await _containerService.GetAllContainerData();
 
-                OnImagesFetched?.Invoke( _containerService.Images );
-                OnContainersFetched?.Invoke( _containerService.Containers );
-                OnVolumesFetched?.Invoke( _containerService.Volumes );
+                OnImagesFetched?.Invoke(_containerService.Images);
+                OnContainersFetched?.Invoke(_containerService.Containers);
+                OnVolumesFetched?.Invoke(_containerService.Volumes);
             }).Wait();
 
             Thread.Sleep(FetchInSeconds * 1000);

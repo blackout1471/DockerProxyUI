@@ -22,15 +22,15 @@ internal class MainViewModel : ObservableObject
     public SettingsViewModel SettingsViewModel { get; set; }
 
     private object currentView;
-	public object CurrentView
-	{
-		get { return currentView; }
-		set 
-		{ 
-			currentView = value;
-			OnPropertyChanged();
-		}
-	}
+    public object CurrentView
+    {
+        get { return currentView; }
+        set
+        {
+            currentView = value;
+            OnPropertyChanged();
+        }
+    }
 
     private readonly ContainerBackgroundService _service;
 
@@ -49,7 +49,7 @@ internal class MainViewModel : ObservableObject
         var volumeManager = new VolumeManager(provider);
 
         _service = new ContainerBackgroundService(containerManager, imageManager, volumeManager);
-        _service.OnContainersFetched += (containers) => 
+        _service.OnContainersFetched += (containers) =>
         {
             ContainersViewModel.Containers = new ObservableCollection<DockerProxy.Models.Container>(containers);
         };
@@ -67,12 +67,12 @@ internal class MainViewModel : ObservableObject
         _service.Start();
 
 
-		CurrentView = DashBoardViewModel;
+        CurrentView = DashBoardViewModel;
 
-		DashBoardViewCommand = new RelayCommand(o =>
-		{
-			CurrentView = DashBoardViewModel;
-		});
+        DashBoardViewCommand = new RelayCommand(o =>
+        {
+            CurrentView = DashBoardViewModel;
+        });
 
         ContainersViewCommand = new RelayCommand(o =>
         {

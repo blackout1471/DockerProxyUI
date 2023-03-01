@@ -5,7 +5,7 @@ namespace DockerProxy.Services;
 
 public class ContainerService
 {
-    public IEnumerable<Container> Containers { get; private set;}
+    public IEnumerable<Container> Containers { get; private set; }
     public IEnumerable<Image> Images { get; private set; }
     public IEnumerable<Volume> Volumes { get; private set; }
 
@@ -30,7 +30,7 @@ public class ContainerService
 
         Volumes = await _VolumeManager.GetVolumesAsync()
             .ContinueWith(x => x.Result.ToList());
-        
+
         foreach (var container in Containers)
         {
             var image = Images.FirstOrDefault(x => x.Id == container.ImageId);
