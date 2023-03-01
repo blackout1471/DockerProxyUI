@@ -67,8 +67,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
-                                <fa:IconBlock Icon="Play" Margin="5" />
-                                <fa:IconBlock Icon="Stop" Margin="5" />
+                                <fa:IconBlock Icon="Plus" Margin="5" />
                                 <fa:IconBlock Icon="Trash" Margin="5" />
                             </StackPanel>
                         </DataTemplate>

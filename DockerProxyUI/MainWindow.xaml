@@ -49,11 +49,14 @@
             </Grid.RowDefinitions>
 
             <Border Grid.ColumnSpan="2"
+                    Grid.Row="0"
                     BorderBrush="{StaticResource SecondaryColor}"
-                    BorderThickness="0,0,0,1">
-                <StackPanel Orientation="Horizontal" 
-                            PreviewMouseLeftButtonDown="StackPanel_PreviewMouseLeftButtonDown"
-                            >
+                    BorderThickness="0,0,0,1"
+                    PreviewMouseLeftButtonDown="Window_Drag"
+                    IsHitTestVisible="True"
+                    Background="Transparent"
+                    >
+                <StackPanel Orientation="Horizontal">
                     <Button 
                         Background="Transparent" 
                         BorderBrush="Transparent" 
