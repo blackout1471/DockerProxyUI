@@ -40,7 +40,7 @@
                 </DataGridTextColumn>
 
                 <DataGridTextColumn Header="Image"
-                                    Binding="{Binding Image}"
+                                    Binding="{Binding Image.Id}"
                                     FontSize="12">
                     <DataGridTextColumn.ElementStyle>
                     <Style TargetType="TextBlock">

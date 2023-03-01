@@ -9,6 +9,7 @@ public class ContainerBackgroundService
 {
     public delegate void FetchedContainersEventHandler(IEnumerable<Container> containers);
     public delegate void FetchedImagesEventHandler(IEnumerable<Image> images);
+    public delegate void FetchedVolumesEventHandler(IEnumerable<Volume> volumes);
 
     public int FetchInSeconds { get; set; } = 5;
 
@@ -16,14 +17,15 @@ public class ContainerBackgroundService
 
     public event FetchedContainersEventHandler? OnContainersFetched;
     public event FetchedImagesEventHandler? OnImagesFetched;
+    public event FetchedVolumesEventHandler? OnVolumesFetched;
 
     private readonly ContainerService _containerService;
 
     private readonly BackgroundWorker _Worker;
 
-    public ContainerBackgroundService(IContainerManager containerManager, IImageManager imageManager)
+    public ContainerBackgroundService(IContainerManager containerManager, IImageManager imageManager, IVolumeManager volumeManager)
     {
-        _containerService = new ContainerService(containerManager, imageManager);
+        _containerService = new ContainerService(containerManager, imageManager, volumeManager);
         _Worker = new BackgroundWorker();
 
         _Worker.DoWork += FetchContainerData;
@@ -48,8 +50,10 @@ public class ContainerBackgroundService
             Task.Run(async () =>
             {
                 await _containerService.GetAllContainerData();
+
                 OnImagesFetched?.Invoke( _containerService.Images );
                 OnContainersFetched?.Invoke( _containerService.Containers );
+                OnVolumesFetched?.Invoke( _containerService.Volumes );
             }).Wait();
 
             Thread.Sleep(FetchInSeconds * 1000);

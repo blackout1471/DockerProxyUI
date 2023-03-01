@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DockerProxyUI.MVVM.ViewModel;
 
-public class ImagesViewModel
+internal class ImagesViewModel
 {
     public ObservableCollection<Image> Images { get; set; }
 

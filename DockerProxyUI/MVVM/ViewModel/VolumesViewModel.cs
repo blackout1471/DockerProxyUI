@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DockerProxy.Models;
+using System.Collections.ObjectModel;
 
-namespace DockerProxyUI.MVVM.ViewModel
+namespace DockerProxyUI.MVVM.ViewModel;
+
+internal class VolumesViewModel
 {
-    internal class VolumesViewModel
-    {
-    }
+    public ObservableCollection<Volume> Volumes { get; set; }
+
+	public VolumesViewModel()
+	{
+		Volumes = new ObservableCollection<Volume>();
+	}
 }

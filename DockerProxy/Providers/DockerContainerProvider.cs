@@ -22,7 +22,29 @@ public class DockerContainerProvider : IContainerProvider
             All = true
         });
 
-        var containerDtos = containers.Select(x => new ContainerDto()
+        return Convert(containers);
+    }
+
+    public async Task<IEnumerable<ImageDto>> GetAllImagesAsync()
+    {
+        var images = await _client.Images.ListImagesAsync(new ImagesListParameters()
+        {
+            All = true
+        });
+
+        return Convert(images);
+    }
+
+    public async Task<IEnumerable<VolumeDto>> GetAllVolumesAsync()
+    {
+        var volumes = await _client.Volumes.ListAsync(new VolumesListParameters());
+
+        return Convert(volumes);
+    }
+
+    private static IEnumerable<ContainerDto> Convert(IList<ContainerListResponse> containers)
+    {
+        return containers.Select(x => new ContainerDto()
         {
             Id = x.ID,
             Names = x.Names,
@@ -37,20 +59,13 @@ public class DockerContainerProvider : IContainerProvider
             State = x.State,
             Status = x.Status,
         });
-
-        return containerDtos;
     }
 
-    public async Task<IEnumerable<ImageDto>> GetAllImagesAsync()
+    private static IEnumerable<ImageDto> Convert(IList<ImagesListResponse> images)
     {
-        var images = await _client.Images.ListImagesAsync(new ImagesListParameters()
-        {
-            All = true
-        });
-
         return images.Select(x => new ImageDto()
         {
-            Containers = x.Containers,
+            ContainerUseId = x.Containers,
             Created = x.Created,
             Id = x.ID,
             Labels = x.Labels,
@@ -60,6 +75,23 @@ public class DockerContainerProvider : IContainerProvider
             SharedSize = x.SharedSize,
             Size = x.Size,
             VirtualSize = x.VirtualSize
+        });
+    }
+
+    private static IEnumerable<VolumeDto> Convert(VolumesListResponse volumes)
+    {
+        return volumes.Volumes.Select(x => new VolumeDto()
+        {
+            CreatedAt = x.CreatedAt,
+            Driver = x.Driver,
+            Labels = x.Labels,
+            Mountpoint = x.Mountpoint,
+            Name = x.Name,
+            Options = x.Options,
+            RefCount = x.UsageData?.RefCount ?? 0,
+            Scope = x.Scope,
+            Size = x.UsageData?.Size ?? 0,
+            Status = x.Status
         });
     }
 }

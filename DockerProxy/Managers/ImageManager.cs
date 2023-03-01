@@ -18,7 +18,7 @@ public class ImageManager : IImageManager
 
         return images.Select(x => new Image()
         {
-            Containers = x.Containers,
+            UsedByContainers = x.ContainerUseId,
             VirtualSize = x.VirtualSize,
             Created = x.Created,
             Id = x.Id,

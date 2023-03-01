@@ -43,11 +43,12 @@ internal class MainViewModel : ObservableObject
         SettingsViewModel = new SettingsViewModel();
 
         var provider = new DockerContainerProvider(new Uri("npipe://./pipe/docker_engine"));
+
         var containerManager = new ContainerManager(provider);
         var imageManager = new ImageManager(provider);
+        var volumeManager = new VolumeManager(provider);
 
-
-        _service = new ContainerBackgroundService(containerManager, imageManager);
+        _service = new ContainerBackgroundService(containerManager, imageManager, volumeManager);
         _service.OnContainersFetched += (containers) => 
         {
             ContainersViewModel.Containers = new ObservableCollection<DockerProxy.Models.Container>(containers);
@@ -57,6 +58,12 @@ internal class MainViewModel : ObservableObject
         {
             ImagesViewModel.Images = new ObservableCollection<DockerProxy.Models.Image>(images);
         };
+
+        _service.OnVolumesFetched += (volumes) =>
+        {
+            VolumesViewModel.Volumes = new ObservableCollection<DockerProxy.Models.Volume>(volumes);
+        };
+
         _service.Start();
 
 
