@@ -10,7 +10,7 @@
     <StackPanel>
         <TextBlock Text="Images" 
                    Foreground="{StaticResource PrimaryColor}"
-                   FontSize="28"
+                   FontSize="{StaticResource LargeFontSize}"
                    HorizontalAlignment="Left"
                    Margin="0,0,0,20"/>
 
@@ -37,9 +37,10 @@
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                 <TextBlock Text="{Binding Tag}" 
-                                           FontSize="14"/>
+                                           FontSize="{StaticResource MediumFontSize}"/>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Id}" />
+                                    <TextBlock Text="{Binding Id}"
+                                            FontSize="{StaticResource SmallFontSize}"/>
                                 </StackPanel>
                             </StackPanel>
                         </DataTemplate>
@@ -48,7 +49,7 @@
 
                 <DataGridTextColumn Header="ContainerId"
                                     Binding="{Binding Containers}"
-                                    FontSize="12"
+                                    FontSize="{StaticResource MediumFontSize}"
                                     Width="100">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -67,9 +68,11 @@
                             <StackPanel Orientation="Vertical">
                                 <Button Style="{StaticResource ContainerActionButtonTheme}"
                                         Content="{fa:ToText Plus}"
+                                        FontSize="{StaticResource MediumFontSize}"
                                         />
                                 <Button Style="{StaticResource ContainerActionButtonTheme}"
                                         Content="{fa:ToText Trash}"
+                                        FontSize="{StaticResource MediumFontSize}"
                                         />
                             </StackPanel>
                         </DataTemplate>

@@ -10,7 +10,7 @@
     <StackPanel>
         <TextBlock Text="Volumes" 
                    Foreground="{StaticResource PrimaryColor}"
-                   FontSize="28"
+                   FontSize="{StaticResource LargeFontSize}"
                    HorizontalAlignment="Left"
                    Margin="0,0,0,20"/>
 
@@ -42,7 +42,7 @@
 
                 <DataGridTextColumn Header="Status"
                                     Binding="{Binding Status}"
-                                    FontSize="12">
+                                    FontSize="{StaticResource MediumFontSize}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="VerticalAlignment" Value="Center" />
@@ -52,7 +52,7 @@
 
                 <DataGridTextColumn Header="Size"
                                     Binding="{Binding Size}"
-                                    FontSize="12"
+                                    FontSize="{StaticResource MediumFontSize}"
                                     >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -71,9 +71,11 @@
                             <StackPanel Orientation="Vertical">
                                 <Button Style="{StaticResource ContainerActionButtonTheme}"
                                         Content="{fa:ToText Plus}"
+                                        FontSize="{StaticResource MediumFontSize}"
                                         />
                                 <Button Style="{StaticResource ContainerActionButtonTheme}"
                                         Content="{fa:ToText Trash}"
+                                        FontSize="{StaticResource MediumFontSize}"
                                         />
                             </StackPanel>
                         </DataTemplate>

@@ -71,7 +71,7 @@
 
             <TextBlock Grid.Column="1"
                        Text="Docker Proxy"
-                       FontSize="22"
+                       FontSize="{StaticResource TitelFontSize}"
                        Foreground="{StaticResource PrimaryColor}"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
@@ -81,7 +81,7 @@
                 <RadioButton Content="Dashboard" 
                              Height="50"
                              Foreground="{StaticResource PrimaryColor}"
-                             FontSize="14"
+                             FontSize="{StaticResource MediumFontSize}"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
                              Command="{Binding DashBoardViewCommand}"
@@ -92,7 +92,7 @@
                 <RadioButton Content="Containers" 
                              Height="50"
                              Foreground="{StaticResource PrimaryColor}"
-                             FontSize="14"
+                             FontSize="{StaticResource MediumFontSize}"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding ContainersViewCommand}"
                              />
@@ -100,7 +100,7 @@
                 <RadioButton Content="Images" 
                              Height="50"
                              Foreground="{StaticResource PrimaryColor}"
-                             FontSize="14"
+                             FontSize="{StaticResource MediumFontSize}"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding ImagesViewCommand}"
                              />
@@ -109,7 +109,7 @@
                 <RadioButton Content="Volumes" 
                              Height="50"
                              Foreground="{StaticResource PrimaryColor}"
-                             FontSize="14"
+                             FontSize="{StaticResource MediumFontSize}"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding VolumesViewCommand}"
                              />
@@ -117,7 +117,7 @@
                 <RadioButton Content="Settings" 
                              Height="50"
                              Foreground="{StaticResource PrimaryColor}"
-                             FontSize="14"
+                             FontSize="{StaticResource MediumFontSize}"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding SettingsViewCommand}"
                              />

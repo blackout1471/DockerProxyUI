@@ -16,14 +16,14 @@
     <StackPanel>
         <TextBlock Text="Containers" 
                    Foreground="{StaticResource PrimaryColor}"
-                   FontSize="28"
+                   FontSize="{StaticResource LargeFontSize}"
                    HorizontalAlignment="Left"
                    Margin="0,0,0,20"/>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Style="{StaticResource ContainerActionButtonTheme}" 
                     Content="{fa:ToText Plus}"
-                    FontSize="20"
+                    FontSize="{StaticResource MediumFontSize}"
                     VerticalAlignment="Bottom"
                     Margin="0,0,10,0"
                     />
@@ -44,7 +44,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
                                     Binding="{Binding Name}"
-                                    FontSize="14">
+                                    FontSize="{StaticResource MediumFontSize}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="VerticalAlignment" Value="Center" />
@@ -54,7 +54,7 @@
 
                 <DataGridTextColumn Header="Image"
                                     Binding="{Binding Image.Tag}"
-                                    FontSize="12">
+                                    FontSize="{StaticResource MediumFontSize}">
                     <DataGridTextColumn.ElementStyle>
                     <Style TargetType="TextBlock">
                         <Setter Property="VerticalAlignment" Value="Center" />
@@ -64,7 +64,7 @@
 
                 <DataGridTextColumn Header="Status"
                                     Binding="{Binding Status}"
-                                    FontSize="12"
+                                    FontSize="{StaticResource MediumFontSize}"
                                     >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -75,7 +75,7 @@
 
                 <DataGridTextColumn Header="Ports"
                                     Binding="{Binding Ports}"
-                                    FontSize="12"
+                                    FontSize="{StaticResource MediumFontSize}"
                                     >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -86,7 +86,7 @@
 
                 <DataGridTextColumn Header="Started"
                                     Binding="{Binding State}"
-                                    FontSize="12"
+                                    FontSize="{StaticResource MediumFontSize}"
                                     >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -105,12 +105,15 @@
                             <StackPanel Orientation="Vertical">
                                 <Button Style="{StaticResource ContainerActionButtonTheme}"
                                         Content="{fa:ToText Play}"
+                                        FontSize="{StaticResource MediumFontSize}"
                                         />
                                 <Button Style="{StaticResource ContainerActionButtonTheme}"
                                         Content="{fa:ToText Stop}"
+                                        FontSize="{StaticResource MediumFontSize}"
                                         />
                                 <Button Style="{StaticResource ContainerActionButtonTheme}"
                                         Content="{fa:ToText Trash}"
+                                        FontSize="{StaticResource MediumFontSize}"
                                         />
                             </StackPanel>
                         </DataTemplate>
