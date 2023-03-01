@@ -19,10 +19,9 @@
                             </Grid.ColumnDefinitions>
                             <Rectangle Grid.Column="0" 
                                        Width="3" 
-                                       Fill="DarkGray" 
+                                       Fill="Transparent" 
                                        x:Name="selectIndicator" 
                                     />
-
 
                             <TextBlock Text="{TemplateBinding Property=Content}"
                                        VerticalAlignment="Center"
@@ -36,8 +35,10 @@
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter TargetName="selectIndicator" Property="Fill"  Value="{StaticResource TertiaryColor}"/>
                             </Trigger>
-                            <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="selectIndicator" Property="Fill"  Value="Transparent"/>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="selectIndicator" Property="Fill"  Value="{StaticResource TertiaryColor}"/>
+                                <Setter Property="Cursor" Value="Hand" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

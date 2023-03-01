@@ -39,47 +39,53 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="150" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="75"/>
+                <RowDefinition Height="40"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Horizontal" PreviewMouseLeftButtonDown="StackPanel_PreviewMouseLeftButtonDown">
-                <Button 
-                    Background="Transparent" 
-                    BorderBrush="Transparent" 
-                    Width="auto" Height="auto" 
-                    VerticalAlignment="Top" 
-                    Margin="5,3,0,0"
-                    Content="{fa:ToText Close}"
-                    Style="{StaticResource windowFaButton}">
-                </Button>
+            <Border Grid.ColumnSpan="2"
+                    BorderBrush="{StaticResource SecondaryColor}"
+                    BorderThickness="0,0,0,1">
+                <StackPanel Orientation="Horizontal" 
+                            PreviewMouseLeftButtonDown="StackPanel_PreviewMouseLeftButtonDown"
+                            >
+                    <Button 
+                        Background="Transparent" 
+                        BorderBrush="Transparent" 
+                        Width="auto" Height="auto" 
+                        VerticalAlignment="Top" 
+                        Margin="5,3,0,0"
+                        Content="{fa:ToText Close}"
+                        Style="{StaticResource windowFaButton}">
+                    </Button>
 
-                <Button 
-                    Background="Transparent" 
-                    BorderBrush="Transparent" 
-                    Width="auto" Height="auto" 
-                    VerticalAlignment="Top" 
-                    Margin="5,3,0,0"
-                    Content="{fa:ToText Minus}"
-                    Style="{StaticResource windowFaButton}">
-                </Button>
+                    <Button 
+                        Background="Transparent" 
+                        BorderBrush="Transparent" 
+                        Width="auto" Height="auto" 
+                        VerticalAlignment="Top" 
+                        Margin="5,3,0,0"
+                        Content="{fa:ToText Minus}"
+                        Style="{StaticResource windowFaButton}">
+                    </Button>
 
-                <Button 
-                    Background="Transparent" 
-                    BorderBrush="Transparent" 
-                    Width="auto" Height="auto" 
-                    VerticalAlignment="Top" 
-                    Margin="5,3,0,0"
-                    Content="{fa:ToText Compress}"
-                    Style="{StaticResource windowFaButton}">
-                </Button>
+                    <Button 
+                        Background="Transparent" 
+                        BorderBrush="Transparent" 
+                        Width="auto" Height="auto" 
+                        VerticalAlignment="Top" 
+                        Margin="5,3,0,0"
+                        Content="{fa:ToText Compress}"
+                        Style="{StaticResource windowFaButton}">
+                    </Button>
 
-            </StackPanel>
+                </StackPanel>
+            </Border>
 
             <TextBlock Grid.Column="1"
                        Text="Docker Proxy"
@@ -89,7 +95,7 @@
                        HorizontalAlignment="Center"
                        />
 
-            <StackPanel Grid.Row="1">
+            <StackPanel Grid.Row="1" Background="{StaticResource MenuBackgroundColor}">
                 <RadioButton Content="Dashboard" 
                              Height="50"
                              Foreground="{StaticResource PrimaryColor}"

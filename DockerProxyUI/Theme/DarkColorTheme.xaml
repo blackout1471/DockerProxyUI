@@ -3,6 +3,9 @@
     <SolidColorBrush x:Key="BackgroundColor"
                      Color="#2e3440" />
 
+    <SolidColorBrush x:Key="MenuBackgroundColor"
+                     Color="#1A1D24" />
+
     <SolidColorBrush x:Key="PrimaryColor"
                      Color="White" />
 
