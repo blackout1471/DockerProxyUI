@@ -12,7 +12,7 @@ public class Container
 
     public DateTime Created { get; init; }
 
-    public IList<byte> Ports { get; init; }
+    public IList<ContainerPort> Ports { get; init; }
 
     public string State { get; init; }
 

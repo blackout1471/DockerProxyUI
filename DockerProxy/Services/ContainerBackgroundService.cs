@@ -13,8 +13,6 @@ public class ContainerBackgroundService
 
     public int FetchInSeconds { get; set; } = 5;
 
-    public Uri ContainerConnection { get; set; } = new Uri("npipe://./pipe/docker_engine");
-
     public event FetchedContainersEventHandler? OnContainersFetched;
     public event FetchedImagesEventHandler? OnImagesFetched;
     public event FetchedVolumesEventHandler? OnVolumesFetched;

@@ -14,7 +14,7 @@ public class ContainerDto
 
     public DateTime Created { get; set; }
 
-    public IList<byte> Ports { get; set; }
+    public IList<PortDto> Ports { get; set; }
 
     public long SizeRw { get; set; }
 

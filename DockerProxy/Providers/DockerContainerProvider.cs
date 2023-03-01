@@ -6,7 +6,6 @@ namespace DockerProxy.Providers;
 
 public class DockerContainerProvider : IContainerProvider
 {
-
     private readonly IDockerClient _client;
 
     public DockerContainerProvider(Uri connection)
@@ -19,7 +18,8 @@ public class DockerContainerProvider : IContainerProvider
     {
         var containers = await _client.Containers.ListContainersAsync(new ContainersListParameters()
         {
-            All = true
+            All = true,
+            Size = true
         });
 
         return Convert(containers);
@@ -52,13 +52,24 @@ public class DockerContainerProvider : IContainerProvider
             ImageId = x.ImageID,
             Command = x.Command,
             Created = x.Created,
-            Ports = x.Ports.Select(p => (byte)p.PublicPort).ToList(),
+            Ports = Convert(x.Ports),
             SizeRw = x.SizeRw,
             SizeRootFs = x.SizeRootFs,
             Labels = x.Labels,
             State = x.State,
             Status = x.Status,
         });
+    }
+
+    private static List<PortDto> Convert(IList<Port> ports)
+    {
+        return ports.Select(p => new PortDto()
+        {
+            IP = p.IP,
+            PrivatePort = p.PrivatePort,
+            PublicPort = p.PublicPort,
+            Type = p.Type,
+        }).ToList();
     }
 
     private static IEnumerable<ImageDto> Convert(IList<ImagesListResponse> images)
