@@ -65,8 +65,12 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
-                                <fa:IconBlock Icon="Plus" Margin="5" />
-                                <fa:IconBlock Icon="Trash" Margin="5" />
+                                <Button Style="{StaticResource ContainerActionButtonTheme}"
+                                        Content="{fa:ToText Plus}"
+                                        />
+                                <Button Style="{StaticResource ContainerActionButtonTheme}"
+                                        Content="{fa:ToText Trash}"
+                                        />
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

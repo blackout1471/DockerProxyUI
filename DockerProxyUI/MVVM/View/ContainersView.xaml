@@ -20,12 +20,20 @@
                    HorizontalAlignment="Left"
                    Margin="0,0,0,20"/>
 
-        <TextBox Width="250"
-                 Height="40"
-                 VerticalAlignment="Center"
-                 HorizontalAlignment="Right"
-                 Margin="5"
-                 Style="{StaticResource SearchBoxTheme}" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Style="{StaticResource ContainerActionButtonTheme}" 
+                    Content="{fa:ToText Plus}"
+                    FontSize="20"
+                    VerticalAlignment="Bottom"
+                    Margin="0,0,10,0"
+                    />
+
+            <TextBox Width="250"
+                     Height="40"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Style="{StaticResource SearchBoxTheme}" />
+        </StackPanel>
 
         <DataGrid RowStyle="{DynamicResource DataGridRowTheme}" 
                 CellStyle="{DynamicResource DataGridCellTheme}" 
@@ -95,9 +103,15 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
-                                <fa:IconBlock Icon="Play" Margin="5" />
-                                <fa:IconBlock Icon="Stop" Margin="5" />
-                                <fa:IconBlock Icon="Trash" Margin="5" />
+                                <Button Style="{StaticResource ContainerActionButtonTheme}"
+                                        Content="{fa:ToText Play}"
+                                        />
+                                <Button Style="{StaticResource ContainerActionButtonTheme}"
+                                        Content="{fa:ToText Stop}"
+                                        />
+                                <Button Style="{StaticResource ContainerActionButtonTheme}"
+                                        Content="{fa:ToText Trash}"
+                                        />
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

@@ -14,12 +14,14 @@
                    HorizontalAlignment="Left"
                    Margin="0,0,0,20"/>
 
-        <TextBox Width="250"
-                 Height="40"
-                 VerticalAlignment="Center"
-                 HorizontalAlignment="Right"
-                 Margin="5"
-                 Style="{StaticResource SearchBoxTheme}" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBox Width="250"
+                     Height="40"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Margin="5"
+                     Style="{StaticResource SearchBoxTheme}" />
+        </StackPanel>
 
         <DataGrid RowStyle="{DynamicResource DataGridRowTheme}" 
                 CellStyle="{DynamicResource DataGridCellTheme}" 
@@ -67,8 +69,12 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
-                                <fa:IconBlock Icon="Plus" Margin="5" />
-                                <fa:IconBlock Icon="Trash" Margin="5" />
+                                <Button Style="{StaticResource ContainerActionButtonTheme}"
+                                        Content="{fa:ToText Plus}"
+                                        />
+                                <Button Style="{StaticResource ContainerActionButtonTheme}"
+                                        Content="{fa:ToText Trash}"
+                                        />
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

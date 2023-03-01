@@ -42,6 +42,36 @@ public class DockerContainerProvider : IContainerProvider
         return Convert(volumes);
     }
 
+    public Task CreateContainerAsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task CreateImageAsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task CreateVolumeAsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task DeleteContainerAsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task DeleteImageAsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task DeleteVolumeAsync()
+    {
+        throw new NotImplementedException();
+    }
+
     private static IEnumerable<ContainerDto> Convert(IList<ContainerListResponse> containers)
     {
         return containers.Select(x => new ContainerDto()
