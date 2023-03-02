@@ -2,6 +2,7 @@
 using DockerProxy.Services;
 using DockerProxyUI.Core;
 using DockerProxyUI.MVVM.Core;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -23,7 +24,9 @@ internal class ContainersViewModel : IViewModel
     public ContainersViewModel(IContainerService containerService , ContainerBackgroundService backgroundService)
     {
         Containers = new ObservableCollection<Container>();
-        _containerService = containerService;
+
+        _containerService = containerService ?? throw new ArgumentNullException();
+        _backgroundService = backgroundService ?? throw new ArgumentNullException();
         backgroundService.OnContainersFetched += OnContainersFetched;
 
         SetupCommands();
