@@ -1,6 +1,8 @@
-﻿namespace DockerProxyUI.MVVM.ViewModel;
+﻿using DockerProxyUI.MVVM.Core;
 
-internal class CreateContainerViewModel
+namespace DockerProxyUI.MVVM.ViewModel;
+
+internal class CreateContainerViewModel : IViewModel
 {
 
 }

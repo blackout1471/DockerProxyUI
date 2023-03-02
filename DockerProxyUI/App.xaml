@@ -16,6 +16,7 @@
                 <ResourceDictionary Source="Theme/WindowActionButtonTheme.xaml" />
                 <ResourceDictionary Source="Theme/ContainerActionButtonTheme.xaml" />
                 <ResourceDictionary Source="Theme/TextboxTheme.xaml" />
+                <ResourceDictionary Source="Theme/ButtonTheme.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
 

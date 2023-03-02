@@ -24,10 +24,10 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Style="{StaticResource ContainerActionButtonTheme}" 
                     Content="{fa:ToText Plus}"
-                    FontSize="{StaticResource MediumFontSize}"
+                    FontSize="{StaticResource LargeFontSize}"
                     VerticalAlignment="Bottom"
                     Margin="0,0,10,0"
-                    Command="{Binding Source={x:Static core:PageNavigator.Instance}, Path=CreateContainerViewCommand}"
+                    Command="{Binding CreateContainerViewCommand}"
                     />
 
             <TextBox Width="250"
@@ -41,7 +41,8 @@
                 CellStyle="{DynamicResource DataGridCellTheme}" 
                 ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderTheme}" 
                 Style="{DynamicResource DataGridTheme}" 
-                ItemsSource="{Binding Containers}" >
+                ItemsSource="{Binding Containers}" 
+                x:Name="containerDatagrid">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
@@ -107,10 +108,14 @@
                             <StackPanel Orientation="Vertical">
                                 <Button Style="{StaticResource ContainerActionButtonTheme}"
                                         Content="{fa:ToText Play}"
+                                        Command="{Binding ElementName=containerDatagrid, Path=DataContext.StartContainerCommand}"
+                                        CommandParameter="{Binding}"
                                         FontSize="{StaticResource MediumFontSize}"
                                         />
                                 <Button Style="{StaticResource ContainerActionButtonTheme}"
                                         Content="{fa:ToText Stop}"
+                                        Command="{Binding ElementName=containerDatagrid, Path=DataContext.StopContainerCommand}"
+                                        CommandParameter="{Binding}"
                                         FontSize="{StaticResource MediumFontSize}"
                                         />
                                 <Button Style="{StaticResource ContainerActionButtonTheme}"

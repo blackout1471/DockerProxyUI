@@ -19,6 +19,15 @@ public class ContainerManager : IContainerManager
         return Convert(containerDtos);
 
     }
+    public async Task StartContainerAsync(string containerId)
+    {
+        await _containerProvider.StartContainerAsync(containerId);
+    }
+
+    public async Task StopContainerAsync(string containerId)
+    {
+        await _containerProvider.StopContainerAsync(containerId);
+    }
 
     private static IEnumerable<Container> Convert(IEnumerable<ContainerDto> containerDtos)
     {
@@ -45,4 +54,5 @@ public class ContainerManager : IContainerManager
             PublicPort = p.PublicPort
         }).ToList();
     }
+
 }

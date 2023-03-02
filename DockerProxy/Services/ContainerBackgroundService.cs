@@ -1,5 +1,4 @@
-﻿using DockerProxy.Managers;
-using DockerProxy.Models;
+﻿using DockerProxy.Models;
 using System.ComponentModel;
 using Container = DockerProxy.Models.Container;
 
@@ -17,13 +16,12 @@ public class ContainerBackgroundService
     public event FetchedImagesEventHandler? OnImagesFetched;
     public event FetchedVolumesEventHandler? OnVolumesFetched;
 
-    private readonly ContainerService _containerService;
-
+    private readonly IContainerService _containerService;
     private readonly BackgroundWorker _Worker;
 
-    public ContainerBackgroundService(IContainerManager containerManager, IImageManager imageManager, IVolumeManager volumeManager)
+    public ContainerBackgroundService(IContainerService containerService)
     {
-        _containerService = new ContainerService(containerManager, imageManager, volumeManager);
+        _containerService = containerService;
         _Worker = new BackgroundWorker();
 
         _Worker.DoWork += FetchContainerData;
@@ -45,14 +43,14 @@ public class ContainerBackgroundService
     {
         while (!_Worker.CancellationPending)
         {
-            Task.Run(async () =>
+            var t = Task.Run(async () =>
             {
-                await _containerService.GetAllContainerData();
+                await _containerService.FetchDataAsync();
 
                 OnImagesFetched?.Invoke(_containerService.Images);
                 OnContainersFetched?.Invoke(_containerService.Containers);
                 OnVolumesFetched?.Invoke(_containerService.Volumes);
-            }).Wait();
+            });
 
             Thread.Sleep(FetchInSeconds * 1000);
         }

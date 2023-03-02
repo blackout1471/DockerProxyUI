@@ -1,4 +1,7 @@
-﻿using DockerProxyUI.MVVM.ViewModel;
+﻿using DockerProxyUI.MVVM.Core;
+using DockerProxyUI.MVVM.ViewModel;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DockerProxyUI.Core;
 
@@ -16,20 +19,6 @@ internal class PageNavigator : ObservableObject
         } 
     }
 
-    public RelayCommand DashBoardViewCommand { get; private set; }
-    public RelayCommand ContainersViewCommand { get; private set; }
-    public RelayCommand ImagesViewCommand { get; private set; }
-    public RelayCommand VolumesViewCommand { get; private set; }
-    public RelayCommand SettingsViewCommand { get; private set; }
-    public RelayCommand CreateContainerViewCommand { get; private set; }
-
-    public DashBoardViewModel DashBoardViewModel { get; private init; }
-    public ContainersViewModel ContainersViewModel { get; private init; }
-    public ImagesViewModel ImagesViewModel { get; private init; }
-    public VolumesViewModel VolumesViewModel { get; private init; }
-    public SettingsViewModel SettingsViewModel { get; private init; }
-    public CreateContainerViewModel CreateContainerViewModel { get; private init; }
-
     private object currentView;
 	public object CurrentView
 	{
@@ -41,50 +30,33 @@ internal class PageNavigator : ObservableObject
 		}
 	}
 
+    private readonly IList<IViewModel> _viewModels;
+
 	public PageNavigator()
 	{
-        DashBoardViewModel = new DashBoardViewModel();
-        ContainersViewModel = new ContainersViewModel();
-        ImagesViewModel = new ImagesViewModel();
-        VolumesViewModel = new VolumesViewModel();
-        SettingsViewModel = new SettingsViewModel();
-        CreateContainerViewModel = new CreateContainerViewModel();
-
-        SetupViewCommands();
-        CurrentView = DashBoardViewModel;
+        _viewModels = new List<IViewModel>();
     }
 
-    private void SetupViewCommands()
+    public void Add(IViewModel viewModel)
     {
-        DashBoardViewCommand = new RelayCommand(o =>
-        {
-            CurrentView = DashBoardViewModel;
-        });
+        _viewModels.Add(viewModel);
+    }
 
-        ContainersViewCommand = new RelayCommand(o =>
-        {
-            CurrentView = ContainersViewModel;
-        });
+    public void Set<T>() where T : class, IViewModel
+    {
+        var viewModel = Get<T>();
+        CurrentView = viewModel;
+    }
 
-        ImagesViewCommand = new RelayCommand(o =>
-        {
-            CurrentView = ImagesViewModel;
-        });
+    private T Get<T>() where T : class, IViewModel
+    {
+        var viewModel = _viewModels.Where(x => x.GetType() == typeof(T))
+            .FirstOrDefault();
 
-        VolumesViewCommand = new RelayCommand(o =>
-        {
-            CurrentView = VolumesViewModel;
-        });
+        if (viewModel is null)
+            throw new KeyNotFoundException();
 
-        SettingsViewCommand = new RelayCommand(o =>
-        {
-            CurrentView = SettingsViewModel;
-        });
-
-        CreateContainerViewCommand = new RelayCommand(o =>
-        {
-            CurrentView = CreateContainerViewModel;
-        });
+        return (T)viewModel;
     }
 
 }

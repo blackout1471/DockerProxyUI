@@ -1,5 +1,7 @@
-﻿namespace DockerProxyUI.MVVM.ViewModel;
+﻿using DockerProxyUI.MVVM.Core;
 
-internal class DashBoardViewModel
+namespace DockerProxyUI.MVVM.ViewModel;
+
+internal class DashBoardViewModel : IViewModel
 {
 }

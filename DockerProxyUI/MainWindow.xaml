@@ -85,7 +85,7 @@
                              FontSize="{StaticResource MediumFontSize}"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
-                             Command="{Binding Source={x:Static core:PageNavigator.Instance}, Path=DashBoardViewCommand}"
+                             Command="{Binding DashboardViewCommand}"
                              >
                     
                 </RadioButton>
@@ -95,7 +95,7 @@
                              Foreground="{StaticResource PrimaryColor}"
                              FontSize="{StaticResource MediumFontSize}"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding Source={x:Static core:PageNavigator.Instance}, Path=ContainersViewCommand}"
+                             Command="{Binding ContainersViewCommand}"
                              />
 
                 <RadioButton Content="Images" 
@@ -103,7 +103,7 @@
                              Foreground="{StaticResource PrimaryColor}"
                              FontSize="{StaticResource MediumFontSize}"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding Source={x:Static core:PageNavigator.Instance}, Path=ImagesViewCommand}"
+                             Command="{Binding ImagesViewCommand}"
                              />
 
 
@@ -112,7 +112,7 @@
                              Foreground="{StaticResource PrimaryColor}"
                              FontSize="{StaticResource MediumFontSize}"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding Source={x:Static core:PageNavigator.Instance}, Path=VolumesViewCommand}"
+                             Command="{Binding VolumesViewCommand}"
                              />
 
                 <RadioButton Content="Settings" 
@@ -120,7 +120,7 @@
                              Foreground="{StaticResource PrimaryColor}"
                              FontSize="{StaticResource MediumFontSize}"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding Source={x:Static core:PageNavigator.Instance}, Path=SettingsViewCommand}"
+                             Command="{Binding SettingsViewCommand}"
                              />
 
             </StackPanel>

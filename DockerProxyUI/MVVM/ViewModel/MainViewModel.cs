@@ -3,7 +3,6 @@ using DockerProxy.Providers;
 using DockerProxy.Services;
 using DockerProxyUI.Core;
 using System;
-using System.Collections.ObjectModel;
 
 namespace DockerProxyUI.MVVM.ViewModel;
 
@@ -11,34 +10,33 @@ internal class MainViewModel : ObservableObject
 {
     private readonly ContainerBackgroundService _service;
 
+    public RelayCommand DashboardViewCommand { get; private set; } = new RelayCommand((o) => PageNavigator.Instance.Set<DashBoardViewModel>());
+    public RelayCommand ContainersViewCommand { get; private set; } = new RelayCommand((o) => PageNavigator.Instance.Set<ContainersViewModel>());
+    public RelayCommand ImagesViewCommand { get; private set; } = new RelayCommand((o) => PageNavigator.Instance.Set<ImagesViewModel>());
+    public RelayCommand VolumesViewCommand { get; private set; } = new RelayCommand((o) => PageNavigator.Instance.Set<VolumesViewModel>());
+    public RelayCommand SettingsViewCommand { get; private set; } = new RelayCommand((o) => PageNavigator.Instance.Set<SettingsViewModel>());
+
     public MainViewModel()
     {
-        var provider = new DockerContainerProvider(new Uri("npipe://./pipe/docker_engine"));
+        var uri = new Uri("npipe://./pipe/docker_engine");
+        uri = new UriBuilder("tcp", "localhost", 2375).Uri;
+        var provider = new DockerContainerProvider(uri);
 
         var containerManager = new ContainerManager(provider);
         var imageManager = new ImageManager(provider);
         var volumeManager = new VolumeManager(provider);
 
-        _service = new ContainerBackgroundService(containerManager, imageManager, volumeManager);
-        SetupServiceDataEvents();
+        var containerService = new ContainerService(containerManager, imageManager, volumeManager);
+        _service = new ContainerBackgroundService(containerService);
+
+        PageNavigator.Instance.Add(new DashBoardViewModel());
+        PageNavigator.Instance.Add(new ContainersViewModel(containerService, _service));
+        PageNavigator.Instance.Add(new ImagesViewModel());
+        PageNavigator.Instance.Add(new VolumesViewModel());
+        PageNavigator.Instance.Add(new SettingsViewModel());
+        PageNavigator.Instance.Add(new CreateContainerViewModel());
+        PageNavigator.Instance.Set<DashBoardViewModel>();
+        
         _service.Start();
-    }
-
-    private void SetupServiceDataEvents()
-    {
-        _service.OnContainersFetched += (containers) =>
-        {
-            PageNavigator.Instance.ContainersViewModel.Containers = new ObservableCollection<DockerProxy.Models.Container>(containers);
-        };
-
-        _service.OnImagesFetched += (images) =>
-        {
-            PageNavigator.Instance.ImagesViewModel.Images = new ObservableCollection<DockerProxy.Models.Image>(images);
-        };
-
-        _service.OnVolumesFetched += (volumes) =>
-        {
-            PageNavigator.Instance.VolumesViewModel.Volumes = new ObservableCollection<DockerProxy.Models.Volume>(volumes);
-        };
     }
 }

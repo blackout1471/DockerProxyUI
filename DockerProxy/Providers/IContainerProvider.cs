@@ -14,8 +14,12 @@ public interface IContainerProvider
     public Task CreateImageAsync();
     public Task CreateVolumeAsync();
 
-    public Task DeleteContainerAsync();
-    public Task DeleteImageAsync();
-    public Task DeleteVolumeAsync();
+    public Task DeleteContainerAsync(string containerId);
+    public Task DeleteImageAsync(string imageId);
+    public Task DeleteVolumeAsync(string volumeId);
+
+    public Task StopContainerAsync(string containerId);
+
+    public Task StartContainerAsync(string containerId);
 
 }

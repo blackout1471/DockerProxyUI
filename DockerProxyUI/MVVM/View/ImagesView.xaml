@@ -30,7 +30,7 @@
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Tag" />
+                        <TextBlock Text="Name" />
                     </DataGridTemplateColumn.Header>
 
                     <DataGridTemplateColumn.CellTemplate>

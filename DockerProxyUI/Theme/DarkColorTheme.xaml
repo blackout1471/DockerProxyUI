@@ -10,12 +10,6 @@
 
     <sys:Double x:Key="SmallFontSize">12</sys:Double>
 
-    <SolidColorBrush x:Key="BackgroundColor"
-                     Color="#2e3440"/>
-
-    <SolidColorBrush x:Key="MenuBackgroundColor"
-                     Color="#1A1D24" />
-
     <SolidColorBrush x:Key="PrimaryColor"
                      Color="White" />
 
@@ -23,5 +17,14 @@
                      Color="#3b4252" />
 
     <SolidColorBrush x:Key="TertiaryColor"
+                     Color="#434c5e" />
+
+    <SolidColorBrush x:Key="BackgroundColor"
+                     Color="#2e3440"/>
+
+    <SolidColorBrush x:Key="MenuBackgroundColor"
+                     Color="#1A1D24" />
+
+    <SolidColorBrush x:Key="SelectColor"
                      Color="#434c5e" />
 </ResourceDictionary>

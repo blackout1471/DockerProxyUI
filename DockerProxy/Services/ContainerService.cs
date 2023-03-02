@@ -3,7 +3,7 @@ using DockerProxy.Models;
 
 namespace DockerProxy.Services;
 
-public class ContainerService
+public class ContainerService : IContainerService
 {
     public IEnumerable<Container> Containers { get; private set; }
     public IEnumerable<Image> Images { get; private set; }
@@ -13,14 +13,16 @@ public class ContainerService
     private readonly IImageManager _ImageManager;
     private readonly IVolumeManager _VolumeManager;
 
-    public ContainerService(IContainerManager containerManager, IImageManager imageManager, IVolumeManager volumeManager)
+    public ContainerService(IContainerManager containerManager,
+                            IImageManager imageManager,
+                            IVolumeManager volumeManager)
     {
         _ContainerManager = containerManager;
         _ImageManager = imageManager;
         _VolumeManager = volumeManager;
     }
 
-    public async Task GetAllContainerData()
+    public async Task FetchDataAsync()
     {
         Containers = await _ContainerManager.GetContainersAsync()
             .ContinueWith(x => x.Result.ToList());
@@ -30,16 +32,15 @@ public class ContainerService
 
         Volumes = await _VolumeManager.GetVolumesAsync()
             .ContinueWith(x => x.Result.ToList());
+    }
 
-        foreach (var container in Containers)
-        {
-            var image = Images.FirstOrDefault(x => x.Id == container.ImageId);
+    public async Task StartContainerAsync(string containerId)
+    {
+        await _ContainerManager.StartContainerAsync(containerId);
+    }
 
-            if (image == null)
-                continue;
-
-            image.Containers.Add(container);
-            container.Image = image;
-        }
+    public async Task StopContainerAsync(string containerId)
+    {
+        await _ContainerManager.StopContainerAsync(containerId);
     }
 }

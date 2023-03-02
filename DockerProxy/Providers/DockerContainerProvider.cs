@@ -1,6 +1,7 @@
 ﻿using Docker.DotNet;
 using Docker.DotNet.Models;
 using DockerProxy.DataTransferObjects;
+using DockerProxy.Models;
 
 namespace DockerProxy.Providers;
 
@@ -57,19 +58,29 @@ public class DockerContainerProvider : IContainerProvider
         throw new NotImplementedException();
     }
 
-    public Task DeleteContainerAsync()
+    public async Task DeleteContainerAsync(string containerId)
     {
-        throw new NotImplementedException();
+        await _client.Containers.RemoveContainerAsync(containerId, new ContainerRemoveParameters());
     }
 
-    public Task DeleteImageAsync()
+    public async Task DeleteImageAsync(string imageId)
     {
-        throw new NotImplementedException();
+        await _client.Images.DeleteImageAsync(imageId, new ImageDeleteParameters());
     }
 
-    public Task DeleteVolumeAsync()
+    public async Task DeleteVolumeAsync(string volumeId)
     {
-        throw new NotImplementedException();
+        await _client.Volumes.RemoveAsync(volumeId);
+    }
+
+    public async Task StopContainerAsync(string containerId)
+    {
+        await _client.Containers.StopContainerAsync(containerId, new ContainerStopParameters());
+    }
+
+    public async Task StartContainerAsync(string containerId)
+    {
+        await _client.Containers.StartContainerAsync(containerId, new ContainerStartParameters());
     }
 
     private static IEnumerable<ContainerDto> Convert(IList<ContainerListResponse> containers)
