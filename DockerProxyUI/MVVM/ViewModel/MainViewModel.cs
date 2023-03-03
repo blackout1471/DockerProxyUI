@@ -34,7 +34,7 @@ internal class MainViewModel : ObservableObject
         PageNavigator.Instance.Add(new ImagesViewModel(containerService, _service));
         PageNavigator.Instance.Add(new VolumesViewModel(containerService, _service));
         PageNavigator.Instance.Add(new SettingsViewModel());
-        PageNavigator.Instance.Add(new CreateContainerViewModel());
+        PageNavigator.Instance.Add(new CreateContainerViewModel(_service));
         PageNavigator.Instance.Set<DashBoardViewModel>();
         
         _service.Start();

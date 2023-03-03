@@ -24,22 +24,19 @@
                    HorizontalAlignment="Left"
                    Margin="0,0,0,20"/>
 
-        <ComboBox Grid.Row="1">
-            <ComboBoxItem>
-                <TextBlock Text="Image 1" />
-            </ComboBoxItem>
-            <ComboBoxItem>
-                <TextBlock Text="Image 2" />
-            </ComboBoxItem>
-            <ComboBoxItem>
-                <TextBlock Text="Image 3" />
-            </ComboBoxItem>
-            <ComboBoxItem>
-                <TextBlock Text="Image 4" />
-            </ComboBoxItem>
+        <ComboBox Grid.Row="1" 
+                  ItemsSource="{Binding Images}"
+                  SelectedItem="{Binding SelectedImage}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Tag}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
         </ComboBox>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="2">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                      Grid.Row="2"
+                      Visibility="Visible">
             <StackPanel>
                 <TextBlock 
                     FontSize="{StaticResource LargeFontSize}"
