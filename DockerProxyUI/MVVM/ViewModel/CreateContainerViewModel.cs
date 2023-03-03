@@ -15,13 +15,16 @@ internal class CreateContainerViewModel : IViewModel
     public Image SelectedImage { get; set; }
 
     private readonly ContainerBackgroundService _backgroundService;
+    private readonly IContainerService _containerService;
 
-    public CreateContainerViewModel(ContainerBackgroundService containerService)
+    public CreateContainerViewModel(ContainerBackgroundService backgrounContainerService, IContainerService containerService)
     {
         Images = new ObservableCollection<Image>();
 
-        _backgroundService = containerService ?? throw new ArgumentNullException();
+        _backgroundService = backgrounContainerService ?? throw new ArgumentNullException();
         _backgroundService.OnImagesFetched += _backgroundService_OnImagesFetched;
+
+        _containerService = containerService ?? throw new ArgumentNullException();
 
     }
 

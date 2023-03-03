@@ -2,6 +2,7 @@
 using Docker.DotNet.Models;
 using DockerProxy.DataTransferObjects;
 using DockerProxy.Models;
+using DockerProxy.Models.ContainerConfigurations;
 
 namespace DockerProxy.Providers;
 
@@ -43,9 +44,15 @@ public class DockerContainerProvider : IContainerProvider
         return Convert(volumes);
     }
 
-    public Task CreateContainerAsync()
+    public async Task CreateContainerAsync(CreateContainerConfiguration config)
     {
-        throw new NotImplementedException();
+        var parameters = new CreateContainerParameters()
+        {
+            Name = config.Name,
+            Image = config.ImageId
+        };
+
+        await _client.Containers.CreateContainerAsync(parameters);
     }
 
     public Task CreateImageAsync()

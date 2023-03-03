@@ -1,4 +1,5 @@
 ﻿using DockerProxy.Models;
+using DockerProxy.Models.ContainerConfigurations;
 
 namespace DockerProxy.Services;
 
@@ -12,4 +13,6 @@ public interface IContainerService
 
     public Task StartContainerAsync(string containerId);
     public Task StopContainerAsync(string containerId);
+    public Task CreateContainerAsync(CreateContainerConfiguration config);
+    
 }

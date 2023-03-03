@@ -1,5 +1,6 @@
 ﻿using DockerProxy.DataTransferObjects;
 using DockerProxy.Models;
+using DockerProxy.Models.ContainerConfigurations;
 using DockerProxy.Providers;
 
 namespace DockerProxy.Managers;
@@ -27,6 +28,11 @@ public class ContainerManager : IContainerManager
     public async Task StopContainerAsync(string containerId)
     {
         await _containerProvider.StopContainerAsync(containerId);
+    }
+
+    public async Task CreateContainerAsync(CreateContainerConfiguration config)
+    {
+        await _containerProvider.CreateContainerAsync(config);
     }
 
     private static IEnumerable<Container> Convert(IEnumerable<ContainerDto> containerDtos)

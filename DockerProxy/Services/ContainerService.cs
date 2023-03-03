@@ -1,5 +1,6 @@
 ﻿using DockerProxy.Managers;
 using DockerProxy.Models;
+using DockerProxy.Models.ContainerConfigurations;
 
 namespace DockerProxy.Services;
 
@@ -42,5 +43,10 @@ public class ContainerService : IContainerService
     public async Task StopContainerAsync(string containerId)
     {
         await _ContainerManager.StopContainerAsync(containerId);
+    }
+
+    public async Task CreateContainerAsync(CreateContainerConfiguration config)
+    {
+        await _ContainerManager.CreateContainerAsync(config);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DockerProxy.DataTransferObjects;
+using DockerProxy.Models.ContainerConfigurations;
 
 namespace DockerProxy.Providers;
 
@@ -10,7 +11,7 @@ public interface IContainerProvider
 
     public Task<IEnumerable<VolumeDto>> GetAllVolumesAsync();
 
-    public Task CreateContainerAsync();
+    public Task CreateContainerAsync(CreateContainerConfiguration config);
     public Task CreateImageAsync();
     public Task CreateVolumeAsync();
 
